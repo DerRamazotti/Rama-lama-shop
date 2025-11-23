@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAMA LAMA – Gaming Apparel & Fun Merch</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0b14;
+      color: white;
+    }
+
+    /* Navigation */
+    nav {
+      background: #121322;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 0 12px rgba(255, 45, 168, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #ff2da8;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    nav a:hover {
+      color: #6a5cff;
+      text-shadow: 0 0 8px #6a5cff;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff2da8, #6a5cff);
+      padding: 20px;
+      text-align: center;
+    }
+    header img { height: 120px; }
+    h1 { margin: 10px 0 0 0; font-size: 32px; }
+    .sub { font-size: 14px; opacity: 0.8; }
+
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: url('hero_placeholder.jpg') center/cover no-repeat;
+    }
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #ff2da8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .product {
+      background: #121322;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255, 45, 168, 0.25);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 25px rgba(255, 45, 168, 0.6);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-size: 22px;
+      margin: 10px 0;
+      color: #ff2da8;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      background: #ff2da8;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 12px #ff2da8;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #6a5cff;
+      box-shadow: 0 0 18px #6a5cff;
+    }
+
+    /* Fake Cart Popup */
+    #cartPopup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1a1b2e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 45, 168, 0.8);
+      z-index: 1000;
+      display: none;
+      text-align: center;
+      max-width: 320px;
+    }
+    #cartPopup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ff2da8;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 900;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.6;
+      font-size: 12px;
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 26px; }
+      .hero h2 { font-size: 30px; }
+      .grid { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#top">Home</a>
+  <a href="#shop">Shop</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<header id="top">
+  <img src="rama-lama-logo.png" alt="Rama Lama Logo" />
+  <h1>RAMA LAMA</h1>
+  <div class="sub">THE MOST USELESS GAMING SHOP – BUT YOU WANT IT ANYWAY</div>
+</header>
+
+<section class="hero">
+  <h2>NEON. FUN. USELESS. PERFECT.</h2>
+  <p>Gaming Merch, das niemand braucht — aber jeder liebt.</p>
+</section>
+
+<section id="shop" class="grid">
+
+  <div class="product">
+    <img src="product_nightlight.jpg" alt="RGB Lama Nightlight" />
+    <h3>RGB LAMA NIGHTLIGHT</h3>
+    <p>Light up your Lama Level – 22 × 15 cm Acrylfigur mit wechselnden RGB-Farben für dein Setup.</p>
+    <p class="price">69,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_deskmat.jpg" alt="Desk Mat" />
+    <h3>DING DONG DESK MAT</h3>
+    <p>80 × 35 cm Schreibtisch-Schutzmatte im Rama-Lama-Gaming-Stil. No Matte? No Schutz!</p>
+    <p class="price">29,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_doormat.jpg" alt="Door Mat" />
+    <h3>DING DONG DOORMAT</h3>
+    <p>60 × 90 cm Türmatte für Gamer-Eingänge. Lama drückt die Klingel, du sparst den Boden.</p>
+    <p class="price">29,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_bedding.jpg" alt="Bedding Set" />
+    <h3>VAPORWAVE LAMA NIGHTS</h3>
+    <p>Bettwäsche-Set 135 × 200 cm + 80 × 80 cm. Dream in Retro Style – mit Sonnenuntergang und Cocktail-Lama.</p>
+    <p class="price">69,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_energy.jpg" alt="Ding Dong Boost Energy" />
+    <h3>DING DONG BOOST ENERGY</h3>
+    <p>Energy Drink mit Rama-Lama-Branding. 200% Skill – Zero Tilt. 250 ml.</p>
+    <p class="price">49,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_candle.jpg" alt="Piff Lama Candle" />
+    <h3>PIFF LAMA SCENTED CANDLE</h3>
+    <p>Duftkerze im Wizard-Lama-Design. Für magische Queue-Zeiten und Rage-Recover.</p>
+    <p class="price">34,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_stickers.jpg" alt="Glow Stickers" />
+    <h3>CHIN CHIN GLOW STICKERS</h3>
+    <p>Glow-in-the-dark Sticker-Set mit Lama-Faces und Ding-Dong-Icon. Für Konsolen, Cases und Kühlschränke.</p>
+    <p class="price">19,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_cleaner.jpg" alt="Screen Cleaner" />
+    <h3>LAMA SCREEN CLEANER</h3>
+    <p>Flauschiger Lama-Buddy zum Bildschirmputzen. Wipe out dirt with glamour!</p>
+    <p class="price">29,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" style="padding:40px; background:#0f1020;">
+  <h2 style="text-align:center; text-shadow:0 0 10px #ff2da8;">❓ FAQ (Frequently Asked Lama-Questions)</h2>
+  <div style="max-width:800px; margin:0 auto; font-size:16px; line-height:1.6;">
+    <p><strong>F: Ist dieser Shop echt?</strong><br>Natürlich nicht. Wenn du das glaubst, brauchst du dringend ein Lama-Update.</p>
+    <p><strong>F: Kann ich wirklich etwas kaufen?</strong><br>Nein. Nichts. Nada. Nicht mal ein Pixel.</p>
+    <p><strong>F: Wer macht diesen Unsinn?</strong><br>Ein Lama, das zu viel Neon gesehen hat.</p>
+    <p><strong>F: Warum gibt es Energydrinks, Nightlights und Bettwäsche?</strong><br>Weil niemand gefragt hat – aber jeder es braucht.</p>
+  </div>
+</section>
+
+<!-- Kontakt Section -->
+<section id="kontakt" style="padding:40px; background:#121322;">
+  <h2 style="text-align:center; text-shadow:0 0 10px #6a5cff;">📞 Kontakt (Fake, aber freundlich)</h2>
+  <div style="max-width:800px; margin:0 auto; font-size:16px; line-height:1.6; text-align:center;">
+    <p>Du möchtest mit uns sprechen?<br>Natürlich kannst du das nicht. Aber hier sind trotzdem unsere Fake-Daten:</p>
+    <p><strong>📧 E-Mail:</strong> support@ramalama-fakeshop.not-real</p>
+    <p><strong>☎ Hotline:</strong> +49 800 LAMA HELP (wartet ewig, niemand geht ran)</p>
+    <p><strong>📍 Adresse:</strong> Lama Hill 1337, Neon City – existiert nicht.</p>
+  </div>
+</section>
+
+<div id="overlay"></div>
+<div id="cartPopup">
+  <h3>🛒 Lama Cart</h3>
+  <p id="cartText">Produkt wurde hinzugefügt!</p>
+  <p style="font-size:12px; opacity:0.7;">(Checkout deaktiviert – Fake Shop. Viel Spaß 😂)</p>
+  <button onclick="closeCart()">OKAY...</button>
+</div>
+
+<footer>
+  Dies ist ein fiktiver Shop. Kein echter Handel. Nur Spaß. © Rama Lama
+</footer>
+
+<script>
+function addToCart(name) {
+  document.getElementById('cartText').innerText = name + " wurde in den Lama-Cart gelegt!";
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('cartPopup').style.display = 'block';
+}
+function closeCart() {
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('cartPopup').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const product = btn.parentElement.querySelector('h3').innerText;
+      addToCart(product);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
