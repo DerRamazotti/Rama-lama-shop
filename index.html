@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -111,6 +111,58 @@
       0% { text-shadow: 0 0 6px #ff2da8; }
       50% { text-shadow: 0 0 18px #ff2da8; }
       100% { text-shadow: 0 0 6px #ff2da8; }
+    }
+
+    /* Rabattcode-Sektion */
+    .discount-section {
+      padding: 30px 20px 40px 20px;
+      text-align: center;
+      background: #121322;
+      box-shadow: 0 0 20px rgba(106, 92, 255, 0.4) inset;
+    }
+    .discount-section h2 {
+      text-shadow: 0 0 10px #6a5cff;
+      margin-bottom: 10px;
+    }
+    .discount-codes {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    .discount-codes span {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ff2da8;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .discount-form {
+      margin-top: 10px;
+    }
+    .discount-input {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-right: 5px;
+      min-width: 160px;
+    }
+    .discount-button {
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: none;
+      background: #ff2da8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ff2da8;
+    }
+    .discount-result {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.8;
     }
 
     .grid {
@@ -248,6 +300,23 @@
   </div>
 </section>
 
+<!-- 💸 NIE FUNKTIONIERENDE RABATTCODES -->
+<section class="discount-section">
+  <h2>💸 RAMA LAMA RABATTCODES</h2>
+  <div class="discount-codes">
+    Probier doch mal:<br />
+    <span>LAMA10</span>
+    <span>DINGDONG20</span>
+    <span>ULTRASKILL30</span><br />
+    (Spoiler: Keiner davon funktioniert. Das ist ein Fake-Shop.)
+  </div>
+  <div class="discount-form">
+    <input id="discountInput" class="discount-input" type="text" placeholder="Code eingeben..." />
+    <button class="discount-button" onclick="checkDiscount()">EINLÖSEN</button>
+    <div id="discountResult" class="discount-result"></div>
+  </div>
+</section>
+
 <section id="shop" class="grid">
 
   <div class="product">
@@ -314,8 +383,6 @@
     <a class="button" href="#">ADD TO LAMA-CART</a>
   </div>
 
-  <!-- NEUE PRODUKTE -->
-
   <div class="product">
     <img src="product_slippers.png" alt="RGB Slippers" />
     <h3>RAMA LAMA RGB SLIPPERS</h3>
@@ -340,6 +407,15 @@
     <p>Neon-Reinigungsspray, Mikrofasertuch, Kissen & T-Shirt im Rama-Lama-Style. Erst alles sauber machen, dann drauf fläzen.</p>
     <p>Set: 1 × Spray (250 ml), 1 × Tuch, 1 × Kissen, 1 × Shirt (Größen M–XL)</p>
     <p class="price">69,95 €</p>
+    <a class="button" href="#">ADD TO LAMA-CART</a>
+  </div>
+
+  <div class="product">
+    <img src="product_gloves.png" alt="RGB Gamer Gloves" />
+    <h3>PRO GAMER RGB GLOVES</h3>
+    <p>High-End Neon-Gaming-Handschuhe mit RGB-Pads für +300% Skill, bessere Flickshots und wärmere Hände.</p>
+    <p>Größe: One Size (passt jedem Gamer – außer Casuals)</p>
+    <p class="price">79,95 €</p>
     <a class="button" href="#">ADD TO LAMA-CART</a>
   </div>
 
@@ -388,6 +464,20 @@ function addToCart(name) {
 function closeCart() {
   document.getElementById('overlay').style.display = 'none';
   document.getElementById('cartPopup').style.display = 'none';
+}
+
+function checkDiscount() {
+  const input = document.getElementById('discountInput');
+  const result = document.getElementById('discountResult');
+  const code = (input.value || "").trim().toUpperCase();
+
+  if (!code) {
+    result.innerText = "Bitte gib einen Code ein. Er wird zwar auch nicht funktionieren, aber trotzdem.";
+    return;
+  }
+
+  result.innerText = "Code \"" + code + "\" ist leider ungültig. "
+    + "Gute Nachricht: Du hast exakt so viel Rabatt wie alle anderen – 0%.";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
