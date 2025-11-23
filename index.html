@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -53,6 +53,64 @@
       font-size: 40px;
       margin-bottom: 10px;
       text-shadow: 0 0 15px #ff2da8;
+    }
+
+    /* Promo Video Section */
+    .promo-section {
+      padding: 40px 20px 60px 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, #ff2da8 0, #0a0b14 55%);
+    }
+    .promo-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff2da8;
+      letter-spacing: 1px;
+      animation: promoPulse 2.5s ease-in-out infinite;
+    }
+    .promo-sub {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+    .promo-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 45, 168, 0.8);
+      position: relative;
+    }
+    .promo-aspect {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+    }
+    .promo-aspect iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .promo-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(10, 11, 20, 0.85);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid rgba(255, 45, 168, 0.8);
+    }
+
+    @keyframes promoPulse {
+      0% { text-shadow: 0 0 6px #ff2da8; }
+      50% { text-shadow: 0 0 18px #ff2da8; }
+      100% { text-shadow: 0 0 6px #ff2da8; }
     }
 
     .grid {
@@ -149,6 +207,7 @@
       h1 { font-size: 26px; }
       .hero h2 { font-size: 30px; }
       .grid { padding: 20px; }
+      .promo-title { font-size: 22px; }
     }
   </style>
 </head>
@@ -170,6 +229,23 @@
 <section class="hero">
   <h2>NEON. FUN. USELESS. PERFECT.</h2>
   <p>Gaming Merch, das niemand braucht — aber jeder liebt.</p>
+</section>
+
+<!-- 🎬 RAMA LAMA PROMOVIDEO -->
+<section id="promo-video" class="promo-section">
+  <h2 class="promo-title">🎬 RAMA LAMA PROMO</h2>
+  <div class="promo-sub">Direkt aus der Lama-Werbehölle. Kurz, laut, sinnlos – perfekt.</div>
+
+  <div class="promo-wrapper">
+    <div class="promo-aspect">
+      <iframe
+        src="https://www.youtube.com/embed/mNp3IE7SwoI?autoplay=1&mute=1&loop=1&playlist=mNp3IE7SwoI"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="promo-badge">Now playing • Rama Lama Ad</div>
+  </div>
 </section>
 
 <section id="shop" class="grid">
@@ -250,7 +326,7 @@
   </div>
 
   <div class="product">
-    <img src="product_chili.png" alt="Chili Saucen Set" />
+    <img src="product_chili_set.png" alt="Chili Saucen Set" />
     <h3>RAMA LAMA CHILI SAUCEN SET</h3>
     <p>Dreifach-Saucen-Combo von mild bis „Warum tue ich mir das an?“. Perfekt für Ranked-Abende und Mutproben im Voicechat.</p>
     <p>Inhalt: 3 × 250 ml – Level 1, 5 und 10 🔥</p>
