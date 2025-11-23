@@ -5,11 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RAMA LAMA – Gaming Apparel & Fun Merch</title>
   <style>
+    :root {
+      --scroll-offset: 0px;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0a0b14;
       color: white;
+      overflow-x: hidden;
+    }
+
+    /* Parallax Neon Galaxy Background */
+    .parallax-sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 140vh;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,45,168,0.4) 0, transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(106,92,255,0.4) 0, transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(0,255,210,0.25) 0, transparent 55%),
+        radial-gradient(circle, #050612 0, #050612 45%, #02030a 100%);
+      opacity: 0.7;
+      z-index: -2;
+      transform: translateY(var(--scroll-offset));
+      pointer-events: none;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.5) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 70% 10%, rgba(255,255,255,0.35) 0, transparent 60%),
+        radial-gradient(2px 2px at 40% 80%, rgba(255,255,255,0.45) 0, transparent 60%);
+      opacity: 0.25;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* Navigation */
@@ -39,15 +74,21 @@
       background: linear-gradient(90deg, #ff2da8, #6a5cff);
       padding: 20px;
       text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
     header img { height: 120px; }
     h1 { margin: 10px 0 0 0; font-size: 32px; }
     .sub { font-size: 14px; opacity: 0.8; }
 
+    .visitor {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
     .hero {
       padding: 60px 20px;
       text-align: center;
-      background: url('hero_placeholder.jpg') center/cover no-repeat;
     }
     .hero h2 {
       font-size: 40px;
@@ -59,7 +100,7 @@
     .promo-section {
       padding: 40px 20px 60px 20px;
       text-align: center;
-      background: radial-gradient(circle at top, #ff2da8 0, #0a0b14 55%);
+      background: radial-gradient(circle at top, rgba(255,45,168,0.4) 0, #0a0b14 60%);
     }
     .promo-title {
       font-size: 28px;
@@ -84,7 +125,7 @@
     .promo-aspect {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
     }
     .promo-aspect iframe {
       position: absolute;
@@ -106,7 +147,6 @@
       letter-spacing: 1px;
       border: 1px solid rgba(255, 45, 168, 0.8);
     }
-
     @keyframes promoPulse {
       0% { text-shadow: 0 0 6px #ff2da8; }
       50% { text-shadow: 0 0 18px #ff2da8; }
@@ -170,6 +210,7 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       padding: 40px;
+      perspective: 1000px;
     }
     .product {
       background: #121322;
@@ -177,11 +218,12 @@
       padding: 20px;
       box-shadow: 0 0 15px rgba(255, 45, 168, 0.25);
       text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transform-style: preserve-3d;
     }
     .product:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 25px rgba(255, 45, 168, 0.6);
+      transform: translateY(-8px) rotateX(3deg) rotateY(-4deg) scale(1.03);
+      box-shadow: 0 0 28px rgba(255, 45, 168, 0.8);
     }
     .product img {
       width: 100%;
@@ -209,6 +251,44 @@
     .button:hover {
       background: #6a5cff;
       box-shadow: 0 0 18px #6a5cff;
+    }
+
+    /* Fake Twitter Feed */
+    .feed-section {
+      padding: 40px 20px;
+      background: #101123;
+    }
+    .feed-section h2 {
+      text-align: center;
+      text-shadow: 0 0 10px #1DA1F2;
+    }
+    .tweets {
+      max-width: 900px;
+      margin: 25px auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .tweet {
+      background: #15162a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+      font-size: 14px;
+      position: relative;
+    }
+    .tweet::before {
+      content: "🐦 @RamaLamaOfficial";
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #1DA1F2;
+      font-size: 12px;
+    }
+    .tweet-time {
+      margin-top: 8px;
+      font-size: 11px;
+      opacity: 0.7;
     }
 
     /* Fake Cart Popup */
@@ -248,6 +328,36 @@
       display: none;
     }
 
+    /* Shooter HUD + Targets */
+    #shooterHud {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(10,11,24,0.9);
+      border-radius: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,45,168,0.7);
+      font-size: 12px;
+      box-shadow: 0 0 14px rgba(255,45,168,0.6);
+      z-index: 850;
+    }
+    .target {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #ffffff 0, #ffe0ff 20%, transparent 60%),
+        radial-gradient(circle at 70% 70%, #ff2da8 0, #6a5cff 50%, #0a0b14 100%);
+      box-shadow: 0 0 18px rgba(255,45,168,0.9);
+      cursor: crosshair;
+      z-index: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -260,15 +370,20 @@
       .hero h2 { font-size: 30px; }
       .grid { padding: 20px; }
       .promo-title { font-size: 22px; }
+      #shooterHud { font-size: 11px; padding: 8px 10px; }
     }
   </style>
 </head>
 <body>
 
+<div class="parallax-sky"></div>
+
 <nav>
   <a href="#top">Home</a>
   <a href="#shop">Shop</a>
+  <a href="#feed">Lama Feed</a>
   <a href="#faq">FAQ</a>
+  <a href="#agb">AGB</a>
   <a href="#kontakt">Kontakt</a>
 </nav>
 
@@ -276,6 +391,9 @@
   <img src="rama-lama-logo.png" alt="Rama Lama Logo" />
   <h1>RAMA LAMA</h1>
   <div class="sub">THE MOST USELESS GAMING SHOP – BUT YOU WANT IT ANYWAY</div>
+  <div class="visitor">
+    👽 Alien-Lama Besucher: <span id="visitorNumber">0</span>
+  </div>
 </header>
 
 <section class="hero">
@@ -421,6 +539,29 @@
 
 </section>
 
+<!-- 🐦 Fake Twitter Feed -->
+<section id="feed" class="feed-section">
+  <h2>🐦 RAMA LAMA FEED</h2>
+  <div class="tweets">
+    <div class="tweet">
+      Heute 3 neue Produkte gelauncht. Niemand braucht sie, aber alle klicken drauf. Perfekt.
+      <div class="tweet-time">vor 7 Min · Neon City</div>
+    </div>
+    <div class="tweet">
+      Breaking: Studien zeigen, dass 98% der Gamer besser aimen, wenn irgendwo im Zimmer ein Lama leuchtet.
+      <div class="tweet-time">vor 23 Min · Lama Hill</div>
+    </div>
+    <div class="tweet">
+      Unser Support hat eine Wartezeit von genau 0 Sekunden. Weil es keinen Support gibt.
+      <div class="tweet-time">vor 1 Std · Offline</div>
+    </div>
+    <div class="tweet">
+      Neuer Code „ULTRASKILL30“ wurde gerade veröffentlicht. Funktioniert natürlich nicht. Viel Spaß beim Tippen.
+      <div class="tweet-time">vor 2 Std · Sponsored by Chili Level 10</div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ Section -->
 <section id="faq" style="padding:40px; background:#0f1020;">
   <h2 style="text-align:center; text-shadow:0 0 10px #ff2da8;">❓ FAQ (Frequently Asked Lama-Questions)</h2>
@@ -429,6 +570,26 @@
     <p><strong>F: Kann ich wirklich etwas kaufen?</strong><br>Nein. Nichts. Nada. Nicht mal ein Pixel.</p>
     <p><strong>F: Wer macht diesen Unsinn?</strong><br>Ein Lama, das zu viel Neon gesehen hat.</p>
     <p><strong>F: Warum gibt es Energydrinks, Nightlights und Bettwäsche?</strong><br>Weil niemand gefragt hat – aber jeder es braucht.</p>
+  </div>
+</section>
+
+<!-- AGB Section -->
+<section id="agb" style="padding:40px; background:#070712;">
+  <h2 style="text-align:center; text-shadow:0 0 10px #ff2da8;">📜 AGB – Allgemeine Lama-Bedingungen</h2>
+  <div style="max-width:900px; margin:0 auto; font-size:14px; line-height:1.7;">
+    <p><strong>§1 Realität</strong><br>
+      Dieser Shop existiert nicht. Alle Produkte sind fiktional, alle Preise sind erfunden, alle Lieferzeiten sind gelogen.
+    </p>
+    <p><strong>§2 Bestellungen</strong><br>
+      Durch das Klicken auf „ADD TO LAMA-CART“ kommt kein Vertrag zustande. Es passiert… absolut nichts. Vielleicht fühlst du dich kurz besser.</p>
+    <p><strong>§3 Garantie</strong><br>
+      Wir gewähren lebenslange Garantie auf alle nicht existierenden Produkte. Sollte etwas kaputt gehen, existiert es weiterhin nicht – damit ist der Zustand wie vorher.</p>
+    <p><strong>§4 Haftung</strong><br>
+      Wir haften nicht für: Lachanfälle, Neon-Sucht, plötzlichen Drang, das Zimmer pink zu beleuchten oder gesteigerten Skill (falls der wirklich passiert, gratulieren wir).</p>
+    <p><strong>§5 Daten</strong><br>
+      Wir sammeln keine Daten. Nicht mal Cookies. Nur virtuelle Lama-Haare.</p>
+    <p><strong>§6 Schlussbestimmung</strong><br>
+      Mit dem Scrollen dieser Seite akzeptierst du automatisch alle Lama-Gesetze von Neon City. Oder auch nicht. Ist ja alles Fake.</p>
   </div>
 </section>
 
@@ -449,6 +610,12 @@
   <p id="cartText">Produkt wurde hinzugefügt!</p>
   <p style="font-size:12px; opacity:0.7;">(Checkout deaktiviert – Fake Shop. Viel Spaß 😂)</p>
   <button onclick="closeCart()">OKAY...</button>
+</div>
+
+<!-- Shooter HUD -->
+<div id="shooterHud">
+  🎯 Lama Shooter<br>
+  Treffer: <span id="shooterScore">0</span>
 </div>
 
 <footer>
@@ -480,6 +647,7 @@ function checkDiscount() {
     + "Gute Nachricht: Du hast exakt so viel Rabatt wie alle anderen – 0%.";
 }
 
+/* Buttons -> Fake Cart */
 document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.button');
   buttons.forEach(btn => {
@@ -490,6 +658,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* Parallax Background on Scroll */
+window.addEventListener('scroll', () => {
+  const offset = window.scrollY * -0.12;
+  document.documentElement.style.setProperty('--scroll-offset', offset + 'px');
+});
+
+/* Alien-Lama Besucherzähler */
+(function() {
+  const el = document.getElementById('visitorNumber');
+  let count = 320000 + Math.floor(Math.random() * 5000);
+  function update() {
+    count += Math.floor(Math.random() * 7) + 1;
+    el.textContent = count.toLocaleString('de-DE');
+  }
+  update();
+  setInterval(update, 4000);
+})();
+
+/* Scroll Shooter Mini Game */
+(function() {
+  let score = 0;
+  const scoreEl = document.getElementById('shooterScore');
+  let gameStarted = false;
+
+  function spawnTarget() {
+    const t = document.createElement('div');
+    t.className = 'target';
+    t.textContent = '🛸';
+    const top = 20 + Math.random() * 50; // vh
+    const left = 5 + Math.random() * 80; // vw
+    t.style.top = top + 'vh';
+    t.style.left = left + 'vw';
+
+    t.addEventListener('click', () => {
+      score++;
+      scoreEl.textContent = score;
+      t.remove();
+    });
+
+    document.body.appendChild(t);
+
+    setTimeout(() => {
+      if (t.parentNode) t.remove();
+    }, 3500);
+  }
+
+  function startGameOnce() {
+    if (gameStarted) return;
+    gameStarted = true;
+    spawnTarget();
+    setInterval(spawnTarget, 4000);
+  }
+
+  window.addEventListener('scroll', startGameOnce, { once: true });
+})();
 </script>
 
 </body>
