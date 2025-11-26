@@ -281,7 +281,72 @@
       font-size: 15px;
       line-height: 1.6;
     }
+<!-- Mini Shooter Game -->
+<section id="minigame" style="padding:40px; background:#0f1020; text-align:center;">
+  <h2 style="text-shadow:0 0 12px #ff2da8;">🎯 Rama Lama Aim Trainer</h2>
+  <p>Triff die Neon-Lamas, bevor sie dich treffen. 100% sinnlos – 200% Spaß.</p>
 
+  <canvas id="lamaGame" width="380" height="260"
+    style="border:2px solid #ff2da8; background:#0a0b14; margin-top:20px; border-radius:12px; box-shadow:0 0 12px #ff2da8;">
+  </canvas>
+</section>
+
+<script>
+  const canvas = document.getElementById("lamaGame");
+  const ctx = canvas.getContext("2d");
+  let score = 0;
+
+  function randomPos(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  function drawTarget(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 18, 0, Math.PI * 2);
+    ctx.fillStyle = "#ff2da8";
+    ctx.fill();
+    ctx.strokeStyle = "#00ffea";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  let target = { x: randomPos(360), y: randomPos(240) };
+
+  function drawGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawTarget(target.x, target.y);
+  }
+
+  canvas.addEventListener("click", function (e) {
+    const rect = canvas.getBoundingClientRect();
+    const mouse = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+    
+    const dx = mouse.x - target.x;
+    const dy = mouse.y - target.y;
+
+    if (dx * dx + dy * dy < 18 * 18) {
+      score++;
+      target = { x: randomPos(360), y: randomPos(240) };
+      drawGame();
+    }
+  });
+
+  drawGame();
+</script>
+    </section>
+
+<!-- MINI SHOOTER GAME -->
+... GANZER GAME CODE ...
+
+<!-- FAKE TWEET WALL KOMMT HIER HIN -->
+... GANZER TWEET CODE ...
+
+<footer>
+  Dies ist ein fiktiver Shop. Kein echter Handel. Nur Spaß. © Rama Lama
+</footer>
     footer {
       text-align: center;
       padding: 30px;
