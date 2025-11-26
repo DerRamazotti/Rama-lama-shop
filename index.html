@@ -11,6 +11,7 @@
       --bg: #0a0b14;
       --card: #121322;
       --cyan: #00ffea;
+      --rage-red: #ff1f3d;
     }
 
     * {
@@ -261,92 +262,30 @@
       box-shadow: 0 0 18px var(--purple);
     }
 
-    /* FAQ & Kontakt */
-    #faq, #kontakt {
+    /* FAQ, AGB & Kontakt */
+    #faq, #agb, #kontakt {
       padding: 40px 20px;
     }
     #faq {
       background: #0f1020;
     }
+    #agb {
+      background: #111222;
+    }
     #kontakt {
       background: #121322;
     }
-    #faq h2, #kontakt h2 {
+    #faq h2, #agb h2, #kontakt h2 {
       text-align: center;
       text-shadow: 0 0 10px var(--pink);
     }
-    #faq .content, #kontakt .content {
+    #faq .content, #agb .content, #kontakt .content {
       max-width: 800px;
       margin: 0 auto;
       font-size: 15px;
       line-height: 1.6;
     }
-<!-- Mini Shooter Game -->
-<section id="minigame" style="padding:40px; background:#0f1020; text-align:center;">
-  <h2 style="text-shadow:0 0 12px #ff2da8;">🎯 Rama Lama Aim Trainer</h2>
-  <p>Triff die Neon-Lamas, bevor sie dich treffen. 100% sinnlos – 200% Spaß.</p>
 
-  <canvas id="lamaGame" width="380" height="260"
-    style="border:2px solid #ff2da8; background:#0a0b14; margin-top:20px; border-radius:12px; box-shadow:0 0 12px #ff2da8;">
-  </canvas>
-</section>
-
-<script>
-  const canvas = document.getElementById("lamaGame");
-  const ctx = canvas.getContext("2d");
-  let score = 0;
-
-  function randomPos(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  function drawTarget(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, 18, 0, Math.PI * 2);
-    ctx.fillStyle = "#ff2da8";
-    ctx.fill();
-    ctx.strokeStyle = "#00ffea";
-    ctx.lineWidth = 3;
-    ctx.stroke();
-  }
-
-  let target = { x: randomPos(360), y: randomPos(240) };
-
-  function drawGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawTarget(target.x, target.y);
-  }
-
-  canvas.addEventListener("click", function (e) {
-    const rect = canvas.getBoundingClientRect();
-    const mouse = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-    
-    const dx = mouse.x - target.x;
-    const dy = mouse.y - target.y;
-
-    if (dx * dx + dy * dy < 18 * 18) {
-      score++;
-      target = { x: randomPos(360), y: randomPos(240) };
-      drawGame();
-    }
-  });
-
-  drawGame();
-</script>
-    </section>
-
-<!-- MINI SHOOTER GAME -->
-... GANZER GAME CODE ...
-
-<!-- FAKE TWEET WALL KOMMT HIER HIN -->
-... GANZER TWEET CODE ...
-
-<footer>
-  Dies ist ein fiktiver Shop. Kein echter Handel. Nur Spaß. © Rama Lama
-</footer>
     footer {
       text-align: center;
       padding: 30px;
@@ -456,6 +395,7 @@
   <div class="links">
     <a href="#shop">Shop</a>
     <a href="#faq">FAQ</a>
+    <a href="#agb">AGB</a>
     <a href="#kontakt">Kontakt</a>
     <button id="rageButton" class="nav-btn">RAGE MODE</button>
   </div>
@@ -642,7 +582,7 @@
 
   <!-- PRO GAMER PAD -->
   <div class="product">
-    <img src="product_pad.png" alt="Rama Lama Pro Gamer Pad" />
+    <img src="product_Pad.png" alt="Rama Lama Pro Gamer Pad" />
     <h3>RAMA LAMA PRO GAMER PAD</h3>
     <p>So präzise, dass du selbst dann triffst, wenn DU verfehlst. Neon-Grip + Ding-Dong-Haptik.</p>
     <p class="price">129,95 €</p>
@@ -661,16 +601,54 @@
 </section>
 
 <section id="faq">
-  <h2>❓ FAQ (Frequently Asked Lama-Questions)</h2>
+  <h2>❓ Oft gestellte Fragen (FAQ)</h2>
   <div class="content">
     <p><strong>F: Ist dieser Shop echt?</strong><br>
-      Natürlich nicht. Wenn du das glaubst, brauchst du dringend ein Lama-Update.</p>
-    <p><strong>F: Kann ich wirklich etwas kaufen?</strong><br>
-      Nein. Nichts. Nada. Nicht mal ein Pixel.</p>
-    <p><strong>F: Wer macht diesen Unsinn?</strong><br>
-      Ein Lama, das zu viel Neon gesehen hat.</p>
-    <p><strong>F: Warum gibt es Energydrinks, Nightlights und Bettwäsche?</strong><br>
-      Weil niemand gefragt hat – aber jeder es braucht.</p>
+      Nein. Dieser Shop ist komplett fiktiv. Wenn du hier wirklich etwas kaufen willst, ist das dein Problem – nicht unseres.</p>
+
+    <p><strong>F: Warum sehen die Produkte so professionell aus?</strong><br>
+      Weil wir mehr Zeit in Photoshop, KI und Neon gesteckt haben als in unsere echte Steuererklärung.</p>
+
+    <p><strong>F: Kann ich die Sachen irgendwo wirklich bestellen?</strong><br>
+      Nein. Kein Warenversand, keine Rechnung, kein PayPal, kein gar nichts. Nur Screenshots für deine Freunde.</p>
+
+    <p><strong>F: Warum sind die Preise so hoch?</strong><br>
+      Weil es Fake ist. Und weil 499,95 € für einen Gaming-Stuhl in Neon einfach gut aussieht.</p>
+
+    <p><strong>F: Gibt es Support, wenn etwas „kaputt“ ist?</strong><br>
+      Klar: Du schreibst uns eine E-Mail, wir lesen sie nie, alle sind zufrieden.</p>
+
+    <p><strong>F: Was ist mit Datenschutz?</strong><br>
+      Wir speichern keine Daten, weil du uns keine geben kannst. Win-Win.</p>
+  </div>
+</section>
+
+<section id="agb">
+  <h2>📜 AGB – Allgemeine Geschäftsunfähigkeits-Bedingungen</h2>
+  <div class="content">
+    <p><strong>§1 Geltungsbereich</strong><br>
+      Diese AGB gelten für alle Besucher, Screenshot-Sammler, Meme-Bastler und Leute, die zufällig hier gelandet sind.</p>
+
+    <p><strong>§2 Vertragsabschluss</strong><br>
+      Ein Vertrag kommt niemals zustande. Egal, wie oft du auf „ADD TO LAMA-CART“ klickst – es passiert exakt nichts außer guter Laune.</p>
+
+    <p><strong>§3 Preise</strong><br>
+      Alle Preise sind frei erfunden, übertrieben und dienen ausschließlich der Unterhaltung. Es gibt keine Rechnungen, keine Rabatte, außer denen, die lustig aussehen.</p>
+
+    <p><strong>§4 Lieferung</strong><br>
+      Lieferung findet nicht statt. Weder per Post, Drohne, Lama noch Quantum-Teleportation.</p>
+
+    <p><strong>§5 Zahlung</strong><br>
+      Du kannst nicht zahlen. Wir können kein Geld nehmen. Perfekte Beziehung.</p>
+
+    <p><strong>§6 Widerruf</strong><br>
+      Du kannst deinen Fake-Kauf jederzeit widerrufen – indem du das Browserfenster schließt oder laut „MÄÄÄH“ rufst. Beides ist gleich rechtsgültig.</p>
+
+    <p><strong>§7 Haftung</strong><br>
+      Wir haften nicht für Lachkrämpfe, spontane Kaufimpulse in echten Shops oder Diskussionen mit deiner besseren Hälfte über „noch ein Gaming-Stuhl“.</p>
+
+    <p><strong>§8 Schlussbestimmung</strong><br>
+      Wenn du diese AGB wirklich komplett gelesen hast, bekommst du von uns innerlich ein Achievement: „§8 – Time Well Wasted“.</p>
   </div>
 </section>
 
@@ -681,6 +659,40 @@
     <p><strong>📧 E-Mail:</strong> support@ramalama-fakeshop.not-real</p>
     <p><strong>☎ Hotline:</strong> +49 800 LAMA HELP (wartet ewig, niemand geht ran)</p>
     <p><strong>📍 Adresse:</strong> Lama Hill 1337, Neon City – existiert nicht.</p>
+  </div>
+</section>
+
+<!-- Mini Shooter Game -->
+<section id="minigame" style="padding:40px; background:#0f1020; text-align:center;">
+  <h2 style="text-shadow:0 0 12px #ff2da8;">🎯 Rama Lama Aim Trainer</h2>
+  <p>Triff die Neon-Lamas, bevor sie dich treffen. 100% sinnlos – 200% Spaß.</p>
+
+  <canvas id="lamaGame" width="380" height="260"
+    style="border:2px solid #ff2da8; background:#0a0b14; margin-top:20px; border-radius:12px; box-shadow:0 0 12px #ff2da8;">
+  </canvas>
+</section>
+
+<!-- Fake Tweet Wall -->
+<section id="tweets" style="padding:40px; background:#121322; color:white;">
+  <h2 style="text-align:center; text-shadow:0 0 10px #6a5cff;">🐦 Rama Lama Social Feed</h2>
+
+  <div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:20px;">
+
+    <div style="background:#1c1d31; padding:16px; border-radius:12px; box-shadow:0 0 10px #6a5cff;">
+      <strong>@NeonNerd42</strong>
+      <p>Hab das Anti-Noob-Spray getestet. Mein Team spielt jetzt schlechter, aber ich fühl mich besser.</p>
+    </div>
+
+    <div style="background:#1c1d31; padding:16px; border-radius:12px; box-shadow:0 0 10px #6a5cff;">
+      <strong>@TiltedTom</strong>
+      <p>Das „Ich höre meine Frau nicht mehr“-Headset funktioniert. Ich höre jetzt auch mich selbst nicht mehr.</p>
+    </div>
+
+    <div style="background:#1c1d31; padding:16px; border-radius:12px; box-shadow:0 0 10px #6a5cff;">
+      <strong>@LamaLover</strong>
+      <p>Hab den Chili-Tripple-Threat probiert. Meine Zunge ist weg. 10/10 würde wieder kaufen.</p>
+    </div>
+
   </div>
 </section>
 
@@ -707,6 +719,53 @@
 </div>
 
 <script>
+  // Mini Game
+  (function() {
+    const canvas = document.getElementById("lamaGame");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    function randomPos(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function drawTarget(x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 18, 0, Math.PI * 2);
+      ctx.fillStyle = "#ff2da8";
+      ctx.fill();
+      ctx.strokeStyle = "#00ffea";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    let target = { x: randomPos(360), y: randomPos(240) };
+
+    function drawGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawTarget(target.x, target.y);
+    }
+
+    canvas.addEventListener("click", function (e) {
+      const rect = canvas.getBoundingClientRect();
+      const mouse = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+
+      const dx = mouse.x - target.x;
+      const dy = mouse.y - target.y;
+
+      if (dx * dx + dy * dy < 18 * 18) {
+        target = { x: randomPos(360), y: randomPos(240) };
+        drawGame();
+      }
+    });
+
+    drawGame();
+  })();
+
+  // Cart + Rage + Random Product
   const cart = [];
 
   const cartIcon = document.getElementById('cartIcon');
@@ -776,7 +835,7 @@
     cartClose.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
     checkoutBtn.addEventListener('click', () => {
-      alert('Nice Try! 🦙\\n\\nDieser Checkout ist komplett fake.\\nAber dein Geschmack ist absolut würdig.');
+      alert('Nice Try! 🦙\n\nDieser Checkout ist komplett fake.\nAber dein Geschmack ist absolut würdig.');
     });
 
     // Random-Product-Button
