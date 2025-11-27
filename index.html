@@ -12,6 +12,7 @@
       --card: #121322;
       --cyan: #00ffea;
       --rage-red: #ff1f3d;
+      --gold: #f7c948;
     }
 
     * {
@@ -130,7 +131,8 @@
       text-align: center;
     }
     header img {
-      height: 110px;
+      height: 170px;
+      filter: drop-shadow(0 0 12px rgba(255,45,168,0.7));
     }
     h1 {
       margin: 10px 0 0 0;
@@ -197,14 +199,63 @@
       border: none;
     }
 
+    /* Shop + Kategorien */
+    #shop {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto 30px auto;
+    }
+
+    .shop-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .shop-header h2 {
+      margin: 0 0 5px 0;
+      text-shadow: 0 0 10px var(--pink);
+    }
+
+    .shop-header p {
+      margin: 0 0 10px 0;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    .category-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .category-filter button {
+      background: #151629;
+      border-radius: 999px;
+      border: 1px solid var(--pink);
+      color: var(--pink);
+      padding: 6px 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .category-filter button.active,
+    .category-filter button:hover {
+      background: var(--pink);
+      color: #0a0b14;
+      box-shadow: 0 0 12px var(--pink);
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
     }
+
     .product {
       background: var(--card);
       border-radius: 14px;
@@ -212,6 +263,7 @@
       box-shadow: 0 0 15px rgba(255, 45, 168, 0.25);
       text-align: center;
       transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
     .product:hover {
       transform: translateY(-4px);
@@ -243,6 +295,7 @@
       color: var(--pink);
       font-weight: bold;
     }
+
     .button {
       display: inline-block;
       margin-top: 10px;
@@ -260,6 +313,51 @@
     .button:hover {
       background: var(--purple);
       box-shadow: 0 0 18px var(--purple);
+    }
+
+    /* Badges */
+    .new-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: linear-gradient(135deg, #ff2da8, #6a5cff);
+      color: white;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255,45,168,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .bestseller-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #f7c948, #ff9f1c);
+      color: #1a1200;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(247,201,72,0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reviews {
+      margin-top: 10px;
+      text-align: left;
+      font-size: 12px;
+      opacity: 0.85;
+    }
+    .reviews h4 {
+      margin: 8px 0 4px 0;
+      font-size: 13px;
+    }
+    .reviews ul {
+      padding-left: 18px;
+      margin: 0;
     }
 
     /* FAQ, AGB & Kontakt */
@@ -429,241 +527,261 @@
   </div>
 </section>
 
-<section id="shop" class="grid">
-  
-  <!-- HEADSHOT EDITION T-SHIRT -->
-<div class="product">
-  <img src="product_headshot.jpg" alt="Headshot Edition Shirt" />
-  <h3>HEADSHOT EDITION T-SHIRT</h3>
-  <p>Für alle, die öfter den Boden treffen als den Gegner. Stylisch, neon,
-     und absolut nutzlos – aber dafür perfekt.</p>
-  <p class="price">39,95 €</p>
-  <a class="button" href="#">ADD TO LAMA-CART</a>
-
-  <div class="reviews">
-    <h4>★ Kundenbewertungen (leicht gelogen)</h4>
-    <ul>
-      <li>⭐⭐⭐⭐⭐ – „Seit ich das Shirt trage, treffe ich zwar immer noch nichts – aber jetzt sehe ich dabei wenigstens gut aus.“ – P. aus der Bronze-Liga</li>
-      <li>⭐⭐⭐⭐⭐ – „Aim unverändert, Style +200%.“ – L. (Aim-Assi seit 2013)</li>
-      <li>⭐⭐⭐⭐☆ – „Shirt sitzt perfekt, Gegner sitzen öfter im Ladebildschirm.“ – NoScopeNils</li>
-      <li>⭐☆☆☆☆ – „Treffe immer noch nichts. Kaufe aber wahrscheinlich noch eins.“ – SaltLord94</li>
-    </ul>
-  </div>
-</div>
-  <!-- RASTA RAMA LAMA T-SHIRT -->
-<div class="product">
-  <img src="product_rasta.png" alt="Rasta Rama Lama Shirt" />
-  <h3>RASTA RAMA LAMA T-SHIRT</h3>
-  <p>
-    Stay chill, stay Lama. Das offiziell entspannteste Shirt des Universums!
-    Mit sanften Reggae-Vibes, Rasta-Farben und dem legendären Rama Lama
-    im Ultra-Relax-Modus. Perfekt für Gamer, die während Loot, Rage,
-    Lag oder Ehefrau-Aggro einfach gechillt bleiben wollen.
-  </p>
-  <p>Material: 100% Baumwolle – schwitzfrei auch bei Bossfights.</p>
-  <p>Größen: S bis 3XL – in Rama-Lamastan sind alle willkommen.</p>
-  <p class="price">39,95 €</p>
-  <a class="button" href="#" onclick="addToCart('Rasta Rama Lama T-Shirt')">ADD TO LAMA-CART</a>
-</div>
-  <!-- NO TALKIE BEFORE COFFEE T-SHIRT -->
-<div class="product">
-  <img src="product_coffee.jpg" alt="No Talkie Coffee Shirt" />
-  <h3>NO TALKIE BEFORE COFFEE – T-SHIRT</h3>
-  <p>Für alle Morgenmuffel, die lieber mit NPCs reden würden als mit echten Menschen.
-     Zeigt schweigend, was Sache ist.</p>
-  <p class="price">34,95 €</p>
-  <a class="button" href="#">ADD TO LAMA-CART</a>
-
-  <div class="reviews">
-    <h4>★ Kundenbewertungen (100% Fake, 100% wahr)</h4>
-    <ul>
-      <li>⭐⭐⭐⭐⭐ – „Endlich versteht mein Umfeld, warum ich morgens keine Sprache beherrsche.“ – Morgenmuffel_Marc</li>
-      <li>⭐⭐⭐⭐☆ – „Kollegen wollten wissen, wo man's kaufen kann. HR denkt jetzt, ich verarsche alle.“ – HomeOfficeHero</li>
-      <li>⭐⭐⭐⭐⭐ – „Kinder wissen jetzt: Erst Kaffee, dann reden.“ – DadOfLamas</li>
-      <li>⭐⭐☆☆☆ – „Meine Frau redet trotzdem. Refund wäre angebracht.“ – RageBarista</li>
-    </ul>
-  </div>
-</div>
-<div class="product">
-  <img src="product_no_problama.png" alt="No Problama T-Shirt" />
-  <h3>NO PROBLAMA T-SHIRT</h3>
-  <p>
-    Das Shirt für alle, die lieber cool bleiben, selbst wenn die Welt brennt.  
-    Perfekt für Bossfights, Ragequits und Diskussionen mit der besseren Hälfte.  
-    Ultra-komfortabel, neonfresh und offiziell vom entspanntesten Lama des Planeten zertifiziert.
-  </p>
-  <p>Größen: XS bis XXL (auch geeignet für Spieler mit viel "Winterfell")</p>
-  <p class="price">79,95 €</p>
-  <a class="button" href="#">ADD TO LAMA-CART</a>
-</div>
-  
-  <!-- RGB NIGHTLIGHT -->
-  <div class="product">
-    <img src="product_nightlight.png" alt="RGB Lama Nightlight" />
-    <h3>RGB LAMA NIGHTLIGHT</h3>
-    <p>Light up your Lama Level – 22 × 15 cm Acrylfigur mit wechselnden RGB-Farben.</p>
-    <p class="price">69,95 €</p>
-    <button class="button" data-name="RGB Lama Nightlight" data-price="69.95">ADD TO LAMA-CART</button>
+<section id="shop">
+  <div class="shop-header">
+    <h2>🛍️ Rama Lama Shop</h2>
+    <p>Filtere nach Kategorie – komplett unnötig, aber sehr befriedigend.</p>
   </div>
 
-  <!-- DESKMAT -->
-  <div class="product">
-    <img src="product_deskmat.png" alt="Desk Mat" />
-    <h3>DING DONG DESK MAT</h3>
-    <p>80 × 35 cm Schreibtisch-Schutzmatte im Rama-Lama-Gaming-Stil. No Matte? No Schutz!</p>
-    <p class="price">29,95 €</p>
-    <button class="button" data-name="Ding Dong Desk Mat" data-price="29.95">ADD TO LAMA-CART</button>
+  <div class="category-filter">
+    <button class="active" data-filter="all">Alle</button>
+    <button data-filter="shirts">T-Shirts</button>
+    <button data-filter="gear">Gear & Gadgets</button>
+    <button data-filter="home">Home & Deko</button>
+    <button data-filter="fragrances">Parfums & Chaos</button>
+    <button data-filter="food">Food & Drinks</button>
   </div>
 
-  <!-- DOORMAT -->
-  <div class="product">
-    <img src="product_doormat.png" alt="Door Mat" />
-    <h3>DING DONG DOORMAT</h3>
-    <p>60 × 90 cm Türmatte für Gamer-Eingänge. Lama drückt die Klingel, du sparst den Boden.</p>
-    <p class="price">29,95 €</p>
-    <button class="button" data-name="Ding Dong Doormat" data-price="29.95">ADD TO LAMA-CART</button>
-  </div>
+  <div class="grid" id="productGrid">
 
-  <!-- BEDDING -->
-  <div class="product">
-    <img src="product_bedding.jpg" alt="Bedding Set" />
-    <h3>VAPORWAVE LAMA NIGHTS</h3>
-    <p>Bettwäsche-Set 135 × 200 cm + 80 × 80 cm. Dream in Retro Style.</p>
-    <p class="price">69,95 €</p>
-    <button class="button" data-name="Vaporwave Lama Nights Bedding" data-price="69.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- RGB NIGHTLIGHT -->
+    <div class="product" data-category="home">
+      <img src="product_nightlight.png" alt="RGB Lama Nightlight" />
+      <h3>RGB LAMA NIGHTLIGHT</h3>
+      <p>Light up your Lama Level – 22 × 15 cm Acrylfigur mit wechselnden RGB-Farben.</p>
+      <p class="price">69,95 €</p>
+      <button class="button" data-name="RGB Lama Nightlight" data-price="69.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- ENERGY DRINK -->
-  <div class="product">
-    <img src="product_energy.jpg" alt="Ding Dong Boost Energy" />
-    <h3>DING DONG BOOST ENERGY</h3>
-    <p>200% Skill – Zero Tilt. Der einzige Drink, der dich schlechter spielen lässt, aber besser fühlen.</p>
-    <p class="price">4,95 €</p>
-    <button class="button" data-name="Ding Dong Boost Energy" data-price="4.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- DESKMAT -->
+    <div class="product" data-category="gear">
+      <img src="product_deskmat.png" alt="Desk Mat" />
+      <h3>DING DONG DESK MAT</h3>
+      <p>80 × 35 cm Schreibtisch-Schutzmatte im Rama-Lama-Gaming-Stil. No Matte? No Schutz!</p>
+      <p class="price">29,95 €</p>
+      <button class="button" data-name="Ding Dong Desk Mat" data-price="29.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- CANDLE -->
-  <div class="product">
-    <img src="product_candle.jpg" alt="Piff Lama Candle" />
-    <h3>PIFF LAMA SCENTED CANDLE</h3>
-    <p>Magische Duftkerze für Queue-Zeiten und Rage-Recover.</p>
-    <p class="price">34,95 €</p>
-    <button class="button" data-name="Piff Lama Candle" data-price="34.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- DOORMAT -->
+    <div class="product" data-category="home">
+      <img src="product_doormat.png" alt="Door Mat" />
+      <h3>DING DONG DOORMAT</h3>
+      <p>60 × 90 cm Türmatte für Gamer-Eingänge. Lama drückt die Klingel, du sparst den Boden.</p>
+      <p class="price">29,95 €</p>
+      <button class="button" data-name="Ding Dong Doormat" data-price="29.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- STICKERS -->
-  <div class="product">
-    <img src="product_stickers.jpg" alt="Glow Stickers" />
-    <h3>CHIN CHIN GLOW STICKERS</h3>
-    <p>Glow-in-the-dark Sticker für Konsolen, Cases und Kühlschränke.</p>
-    <p class="price">19,95 €</p>
-    <button class="button" data-name="Chin Chin Glow Stickers" data-price="19.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- BEDDING -->
+    <div class="product" data-category="home">
+      <img src="product_bedding.jpg" alt="Bedding Set" />
+      <h3>VAPORWAVE LAMA NIGHTS</h3>
+      <p>Bettwäsche-Set 135 × 200 cm + 80 × 80 cm. Dream in Retro Style.</p>
+      <p class="price">69,95 €</p>
+      <button class="button" data-name="Vaporwave Lama Nights Bedding" data-price="69.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- SCREEN CLEANER -->
-  <div class="product">
-    <img src="product_cleaner.jpg" alt="Screen Cleaner" />
-    <h3>LAMA SCREEN CLEANER</h3>
-    <p>Der flauschige Buddy, der deine Fingerabdrücke hasst.</p>
-    <p class="price">29,95 €</p>
-    <button class="button" data-name="Lama Screen Cleaner" data-price="29.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- ENERGY DRINK (BESTSELLER) -->
+    <div class="product" data-category="food">
+      <div class="bestseller-badge">BESTSELLER</div>
+      <img src="product_energy.jpg" alt="Ding Dong Boost Energy" />
+      <h3>DING DONG BOOST ENERGY</h3>
+      <p>200% Skill – Zero Tilt. Der einzige Drink, der dich schlechter spielen lässt, aber besser fühlen.</p>
+      <p class="price">4,95 €</p>
+      <button class="button" data-name="Ding Dong Boost Energy" data-price="4.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- CHILI SAUCE SET -->
-  <div class="product">
-    <img src="product_chili.png" alt="Chili Sauce Set" />
-    <h3>RAMA LAMA CHILI TRIPLE THREAT</h3>
-    <p>Dreifach-Set scharfer Gaming-Saucen. Für Wings, Nachos und emotionale Entscheidungen.</p>
-    <p class="price">69,95 €</p>
-    <button class="button" data-name="Rama Lama Chili Triple Threat" data-price="69.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- CANDLE -->
+    <div class="product" data-category="home">
+      <img src="product_candle.jpg" alt="Piff Lama Candle" />
+      <h3>PIFF LAMA SCENTED CANDLE</h3>
+      <p>Magische Duftkerze für Queue-Zeiten und Rage-Recover.</p>
+      <p class="price">34,95 €</p>
+      <button class="button" data-name="Piff Lama Candle" data-price="34.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- SLIPPERS -->
-  <div class="product">
-    <img src="product_slippers.png" alt="RGB Slippers" />
-    <h3>RAMA LAMA RGB SLIPPERS</h3>
-    <p>Leuchtende Neon-Hausschuhe mit LED-Sohle. Perfekt für Mitternachts-Runs zum Kühlschrank.</p>
-    <p class="price">89,95 €</p>
-    <button class="button" data-name="RGB Slippers" data-price="89.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- STICKERS -->
+    <div class="product" data-category="gear">
+      <img src="product_stickers.jpg" alt="Glow Stickers" />
+      <h3>CHIN CHIN GLOW STICKERS</h3>
+      <p>Glow-in-the-dark Sticker für Konsolen, Cases und Kühlschränke.</p>
+      <p class="price">19,95 €</p>
+      <button class="button" data-name="Chin Chin Glow Stickers" data-price="19.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- AGENT POSTER (SQUAD) -->
-  <div class="product">
-    <img src="product_poster.png" alt="Rama Lama Tactical Squad Poster" />
-    <h3>RAMA LAMA TACTICAL SQUAD POSTER</h3>
-    <p>Elitärer 3-Lama-Strike-Squad im Neon-Action-Look. Jedes Lama mit Rama-Lama-Abzeichen.</p>
-    <p class="price">129,95 €</p>
-    <button class="button" data-name="Rama Lama Tactical Squad Poster" data-price="129.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- SCREEN CLEANER -->
+    <div class="product" data-category="gear">
+      <img src="product_cleaner.jpg" alt="Screen Cleaner" />
+      <h3>LAMA SCREEN CLEANER</h3>
+      <p>Der flauschige Buddy, der deine Fingerabdrücke hasst.</p>
+      <p class="price">29,95 €</p>
+      <button class="button" data-name="Lama Screen Cleaner" data-price="29.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- ANTI NOOB SPRAY -->
-  <div class="product">
-    <img src="product_anti_noob.png" alt="Anti-Noob Spray" />
-    <h3>RAMA LAMA ANTI-NOOB SPRAY</h3>
-    <p>Neutralisiert 99,9% aller Noob-Effekte im Umkreis von 5 Metern. Perfekt für Ranked & Raids.</p>
-    <p>Inhalt: 250 ml – Geruch: „Toxic Victory“</p>
-    <p class="price">129,95 €</p>
-    <button class="button" data-name="Anti-Noob Spray" data-price="129.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- CHILI SAUCE SET (BESTSELLER) -->
+    <div class="product" data-category="food">
+      <div class="bestseller-badge">BESTSELLER</div>
+      <img src="product_chili.png" alt="Chili Sauce Set" />
+      <h3>RAMA LAMA CHILI TRIPLE THREAT</h3>
+      <p>Dreifach-Set scharfer Gaming-Saucen. Für Wings, Nachos und emotionale Entscheidungen.</p>
+      <p class="price">69,95 €</p>
+      <button class="button" data-name="Rama Lama Chili Triple Threat" data-price="69.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- HEADSET -->
-  <div class="product">
-    <img src="product_headset.png" alt="Pro Gamer Headset" />
-    <h3>“ICH HÖRE MEINE FRAU NICHT MEHR” – PRO GAMER HEADSET</h3>
-    <p>Ultra-Schalldämpfung, 7.1 Surround, 200% Skill-Boost und vollständige Real-Life-Noise-Cancellation.</p>
-    <p class="price">179,95 €</p>
-    <button class="button" data-name="Ich höre meine Frau nicht mehr Headset" data-price="179.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- SLIPPERS -->
+    <div class="product" data-category="gear">
+      <img src="product_slippers.png" alt="RGB Slippers" />
+      <h3>RAMA LAMA RGB SLIPPERS</h3>
+      <p>Leuchtende Neon-Hausschuhe mit LED-Sohle. Perfekt für Mitternachts-Runs zum Kühlschrank.</p>
+      <p class="price">89,95 €</p>
+      <button class="button" data-name="RGB Slippers" data-price="89.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- PARFUM NIGHT RESET -->
-  <div class="product">
-    <img src="product_perfume.png" alt="After-Game Parfum Night Reset" />
-    <h3>AFTER-GAME PARFUM – NIGHT RESET EDITION</h3>
-    <p>
-      Für alle Gamer, die nach 6 Stunden Ranked plötzlich merken:
-      „Oh… ich hab ja eine Beziehung.“<br><br>
-      40% Charme-Boost, 60% „Ich bin gar nicht toxisch“-Aura, 100% Ablenkung von deiner K/D.
-    </p>
-    <p class="price">
-      <span style="text-decoration:line-through; opacity:0.6;">179,95 €</span><br>
-      <span style="color:var(--cyan); font-size:22px;">BLACK FRYDAY: 89,95 €</span>
-    </p>
-    <button class="button" data-name="After-Game Parfum Night Reset" data-price="89.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- AGENT POSTER (SQUAD) -->
+    <div class="product" data-category="home">
+      <img src="product_poster.png" alt="Rama Lama Tactical Squad Poster" />
+      <h3>RAMA LAMA TACTICAL SQUAD POSTER</h3>
+      <p>Elitärer 3-Lama-Strike-Squad im Neon-Action-Look. Jedes Lama mit Rama-Lama-Abzeichen.</p>
+      <p class="price">129,95 €</p>
+      <button class="button" data-name="Rama Lama Tactical Squad Poster" data-price="129.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- PARFUM FOR HER -->
-  <div class="product">
-    <img src="product_perfume_her.png" alt="Weekend Reset For Her" />
-    <h3>WEEKEND RESET – FOR HER</h3>
-    <p>
-      Das einzige Parfum, das ihn <em>endlich</em> von der Konsole wegkriegt.
-      Neon-Lavendel, Level-5-Vanille und 99% Tilt-Neutralisation (laut niemandem).
-    </p>
-    <p class="price">
-      <span style="text-decoration:line-through; opacity:0.6;">179,95 €</span><br>
-      <span style="color:var(--cyan); font-size:22px;">BLACK FRYDAY: 89,95 €</span>
-    </p>
-    <button class="button" data-name="Weekend Reset For Her" data-price="89.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- ANTI NOOB SPRAY (BESTSELLER) -->
+    <div class="product" data-category="gear">
+      <div class="bestseller-badge">BESTSELLER</div>
+      <img src="product_anti_noob.png" alt="Anti-Noob Spray" />
+      <h3>RAMA LAMA ANTI-NOOB SPRAY</h3>
+      <p>Neutralisiert 99,9% aller Noob-Effekte im Umkreis von 5 Metern. Perfekt für Ranked & Raids.</p>
+      <p>Inhalt: 250 ml – Geruch: „Toxic Victory“</p>
+      <p class="price">129,95 €</p>
+      <button class="button" data-name="Anti-Noob Spray" data-price="129.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- PRO GAMER PAD -->
-  <div class="product">
-    <img src="product_pad.png" alt="Rama Lama Pro Gamer Pad" />
-    <h3>RAMA LAMA PRO GAMER PAD</h3>
-    <p>So präzise, dass du selbst dann triffst, wenn DU verfehlst. Neon-Grip + Ding-Dong-Haptik.</p>
-    <p class="price">129,95 €</p>
-    <button class="button" data-name="Rama Lama Pro Gamer Pad" data-price="129.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- HEADSET -->
+    <div class="product" data-category="gear">
+      <img src="product_headset.png" alt="Pro Gamer Headset" />
+      <h3>“ICH HÖRE MEINE FRAU NICHT MEHR” – HEADSET</h3>
+      <p>Ultra-Schalldämpfung, 7.1 Surround, 200% Skill-Boost und vollständige Real-Life-Noise-Cancellation.</p>
+      <p class="price">179,95 €</p>
+      <button class="button" data-name="Ich höre meine Frau nicht mehr Headset" data-price="179.95">ADD TO LAMA-CART</button>
+    </div>
 
-  <!-- GAMING CHAIR -->
-  <div class="product">
-    <img src="product_chair.png" alt="Rama Lama Gaming Chair" />
-    <h3>RAMA LAMA GOD-TIER GAMING CHAIR</h3>
-    <p>Lendenstütze für 300 Tilt-Level. Snack-Holster inklusive. Königliches Sitzen, Lama-Skills.</p>
-    <p class="price">499,95 €</p>
-    <button class="button" data-name="Rama Lama God-Tier Gaming Chair" data-price="499.95">ADD TO LAMA-CART</button>
-  </div>
+    <!-- PARFUM NIGHT RESET -->
+    <div class="product" data-category="fragrances">
+      <img src="product_perfume.png" alt="After-Game Parfum Night Reset" />
+      <h3>AFTER-GAME PARFUM – NIGHT RESET EDITION</h3>
+      <p>
+        Für alle Gamer, die nach 6 Stunden Ranked plötzlich merken:
+        „Oh… ich hab ja eine Beziehung.“<br><br>
+        40% Charme-Boost, 60% „Ich bin gar nicht toxisch“-Aura, 100% Ablenkung von deiner K/D.
+      </p>
+      <p class="price">
+        <span style="text-decoration:line-through; opacity:0.6;">179,95 €</span><br>
+        <span style="color:var(--cyan); font-size:22px;">BLACK FRYDAY: 89,95 €</span>
+      </p>
+      <button class="button" data-name="After-Game Parfum Night Reset" data-price="89.95">ADD TO LAMA-CART</button>
+    </div>
 
+    <!-- PARFUM FOR HER -->
+    <div class="product" data-category="fragrances">
+      <img src="product_perfume_her.png" alt="Weekend Reset For Her" />
+      <h3>WEEKEND RESET – FOR HER</h3>
+      <p>
+        Das einzige Parfum, das ihn <em>endlich</em> von der Konsole wegkriegt.
+        Neon-Lavendel, Level-5-Vanille und 99% Tilt-Neutralisation (laut niemandem).
+      </p>
+      <p class="price">
+        <span style="text-decoration:line-through; opacity:0.6;">179,95 €</span><br>
+        <span style="color:var(--cyan); font-size:22px;">BLACK FRYDAY: 89,95 €</span>
+      </p>
+      <button class="button" data-name="Weekend Reset For Her" data-price="89.95">ADD TO LAMA-CART</button>
+    </div>
+
+    <!-- PRO GAMER PAD -->
+    <div class="product" data-category="gear">
+      <img src="product_pad.png" alt="Rama Lama Pro Gamer Pad" />
+      <h3>RAMA LAMA PRO GAMER PAD</h3>
+      <p>So präzise, dass du selbst dann triffst, wenn DU verfehlst. Neon-Grip + Ding-Dong-Haptik.</p>
+      <p class="price">129,95 €</p>
+      <button class="button" data-name="Rama Lama Pro Gamer Pad" data-price="129.95">ADD TO LAMA-CART</button>
+    </div>
+
+    <!-- GAMING CHAIR (BESTSELLER) -->
+    <div class="product" data-category="gear">
+      <div class="bestseller-badge">BESTSELLER</div>
+      <img src="product_chair.png" alt="Rama Lama Gaming Chair" />
+      <h3>RAMA LAMA GOD-TIER GAMING CHAIR</h3>
+      <p>Lendenstütze für 300 Tilt-Level. Snack-Holster inklusive. Königliches Sitzen, Lama-Skills.</p>
+      <p class="price">499,95 €</p>
+      <button class="button" data-name="Rama Lama God-Tier Gaming Chair" data-price="499.95">ADD TO LAMA-CART</button>
+    </div>
+
+    <!-- NO PROBLAMA T-SHIRT -->
+    <div class="product" data-category="shirts">
+      <div class="new-badge">NEU</div>
+      <img src="product_no_problama.png" alt="No Problama T-Shirt" />
+      <h3>NO PROBLAMA T-SHIRT</h3>
+      <p>Das Shirt für alle, die lieber cool bleiben, selbst wenn die Welt brennt.
+         Perfekt für Bossfights, Ragequits und Diskussionen mit der besseren Hälfte.</p>
+      <p>Größen: XS bis XXL (auch geeignet für Spieler mit viel „Winterfell“)</p>
+      <p class="price">79,95 €</p>
+      <button class="button" data-name="No Problama T-Shirt" data-price="79.95">ADD TO LAMA-CART</button>
+    </div>
+
+    <!-- RASTA RAMA LAMA T-SHIRT -->
+    <div class="product" data-category="shirts">
+      <div class="new-badge">NEU</div>
+      <img src="product_rasta.png" alt="Rasta Rama Lama Shirt" />
+      <h3>RASTA RAMA LAMA T-SHIRT</h3>
+      <p>Stay chill, stay Lama. Das offiziell entspannteste Shirt des Universums!
+         Für Gamer, die auch im Tilt noch Reggae im Kopf haben.</p>
+      <p>Größen: S bis 3XL – in Rama-Lamastan sind alle willkommen.</p>
+      <p class="price">39,95 €</p>
+      <button class="button" data-name="Rasta Rama Lama T-Shirt" data-price="39.95">ADD TO LAMA-CART</button>
+    </div>
+
+    <!-- HEADSHOT EDITION T-SHIRT -->
+    <div class="product" data-category="shirts">
+      <div class="new-badge">NEU</div>
+      <img src="product_headshot.jpg" alt="Headshot Edition Shirt" />
+      <h3>HEADSHOT EDITION T-SHIRT</h3>
+      <p>Für alle, die öfter den Boden treffen als den Gegner. Stylisch, neon,
+         und absolut nutzlos – aber dafür perfekt.</p>
+      <p class="price">39,95 €</p>
+      <button class="button" data-name="Headshot Edition T-Shirt" data-price="39.95">ADD TO LAMA-CART</button>
+
+      <div class="reviews">
+        <h4>★ Kundenbewertungen (leicht gelogen)</h4>
+        <ul>
+          <li>⭐⭐⭐⭐⭐ – „Seit ich das Shirt trage, treffe ich zwar immer noch nichts – aber jetzt sehe ich dabei wenigstens gut aus.“ – P. aus der Bronze-Liga</li>
+          <li>⭐⭐⭐⭐⭐ – „Aim unverändert, Style +200%.“ – L. (Aim-Assi seit 2013)</li>
+          <li>⭐⭐⭐⭐☆ – „Shirt sitzt perfekt, Gegner sitzen öfter im Ladebildschirm.“ – NoScopeNils</li>
+          <li>⭐☆☆☆☆ – „Treffe immer noch nichts. Kaufe aber wahrscheinlich noch eins.“ – SaltLord94</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NO TALKIE BEFORE COFFEE T-SHIRT -->
+    <div class="product" data-category="shirts">
+      <div class="new-badge">NEU</div>
+      <img src="product_coffee.jpg" alt="No Talkie Coffee Shirt" />
+      <h3>NO TALKIE BEFORE COFFEE – T-SHIRT</h3>
+      <p>Für alle Morgenmuffel, die lieber mit NPCs reden würden als mit echten Menschen.
+         Zeigt schweigend, was Sache ist.</p>
+      <p class="price">34,95 €</p>
+      <button class="button" data-name="No Talkie Before Coffee T-Shirt" data-price="34.95">ADD TO LAMA-CART</button>
+
+      <div class="reviews">
+        <h4>★ Kundenbewertungen (100% Fake, 100% wahr)</h4>
+        <ul>
+          <li>⭐⭐⭐⭐⭐ – „Endlich versteht mein Umfeld, warum ich morgens keine Sprache beherrsche.“ – Morgenmuffel_Marc</li>
+          <li>⭐⭐⭐⭐☆ – „Kollegen wollten wissen, wo man's kaufen kann. HR denkt jetzt, ich verarsche alle.“ – HomeOfficeHero</li>
+          <li>⭐⭐⭐⭐⭐ – „Meine Kinder wissen jetzt: Erst Kaffee, dann reden.“ – DadOfLamas</li>
+          <li>⭐⭐☆☆☆ – „Meine Frau redet trotzdem. Refund wäre angebracht.“ – RageBarista</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section id="faq">
@@ -831,7 +949,7 @@
     drawGame();
   })();
 
-  // Cart + Rage + Random Product
+  // Cart + Rage + Random Product + Kategorien
   const cart = [];
 
   const cartIcon = document.getElementById('cartIcon');
@@ -906,7 +1024,7 @@
 
     // Random-Product-Button
     const randomBtn = document.getElementById('randomProductBtn');
-    const products = document.querySelectorAll('#shop .product');
+    const products = document.querySelectorAll('#productGrid .product');
     if (randomBtn && products.length) {
       randomBtn.addEventListener('click', () => {
         const index = Math.floor(Math.random() * products.length);
@@ -931,6 +1049,28 @@
         }, 3500);
       });
     }
+
+    // Kategorie-Filter
+    const filterButtons = document.querySelectorAll('.category-filter button');
+    const productElems = document.querySelectorAll('#productGrid .product');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        productElems.forEach(prod => {
+          const cat = prod.dataset.category || 'all';
+          if (filter === 'all' || cat === filter) {
+            prod.style.display = '';
+          } else {
+            prod.style.display = 'none';
+          }
+        });
+      });
+    });
 
     updateCartUI();
   });
