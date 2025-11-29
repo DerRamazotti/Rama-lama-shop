@@ -44,7 +44,7 @@
       padding: 12px 16px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
       box-shadow: 0 0 12px rgba(255, 45, 168, 0.3);
       position: sticky;
       top: 0;
@@ -60,16 +60,17 @@
     }
     nav .links {
       display: flex;
-      gap: 18px;
+      gap: 14px;
       margin-left: auto;
       margin-right: 80px; /* Platz für Cart-Icon */
       align-items: center;
+      flex-wrap: wrap;
     }
     nav a {
       color: var(--pink);
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       transition: 0.2s;
@@ -360,35 +361,102 @@
       margin: 0;
     }
 
-    /* FAQ, AGB & Kontakt */
-    #faq, #agb, #kontakt {
-      padding: 40px 20px;
-    }
-    #faq {
+    /* --- Legal / Info Sections --- */
+    .legal-section {
+      padding: 50px 20px;
       background: #0f1020;
-    }
-    #agb {
-      background: #111222;
-    }
-    #kontakt {
-      background: #121322;
-    }
-    #faq h2, #agb h2, #kontakt h2 {
-      text-align: center;
-      text-shadow: 0 0 10px var(--pink);
-    }
-    #faq .content, #agb .content, #kontakt .content {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 15px;
-      line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
+    .legal-section.alt {
+      background: #121322;
+    }
+
+    .legal-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .legal-title {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px #ff2da8;
+    }
+
+    .legal-subtitle {
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .legal-section p {
+      margin: 6px 0;
+      opacity: 0.9;
+    }
+
+    .legal-list {
+      margin: 8px 0 16px 18px;
+      padding: 0;
+    }
+    .legal-list li {
+      margin-bottom: 4px;
+    }
+
+    /* FAQ cards */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .faq-item {
+      background: #18192a;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    }
+
+    .faq-item h3 {
+      margin-top: 0;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #ff2da8;
+    }
+
+    .faq-item p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* Footer links */
     footer {
       text-align: center;
-      padding: 30px;
-      opacity: 0.6;
+      padding: 30px 15px;
+      opacity: 0.9;
       font-size: 12px;
+      background: #080914;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer .footer-links {
+      margin-bottom: 8px;
+    }
+
+    footer .footer-links a {
+      color: #9da3ff;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 12px;
+    }
+
+    footer .footer-links a:hover {
+      color: #ff2da8;
     }
 
     /* Cart Panel */
@@ -478,6 +546,7 @@
       .video-wrapper iframe { height: 220px; }
       nav .links {
         margin-right: 60px;
+        gap: 8px;
       }
       .cart-icon {
         font-size: 11px;
@@ -494,6 +563,9 @@
     <a href="#shop">Shop</a>
     <a href="#faq">FAQ</a>
     <a href="#agb">AGB</a>
+    <a href="#datenschutz">Datenschutz</a>
+    <a href="#widerruf">Widerruf</a>
+    <a href="#impressum">Impressum</a>
     <a href="#kontakt">Kontakt</a>
     <button id="rageButton" class="nav-btn">RAGE MODE</button>
   </div>
@@ -536,32 +608,14 @@
   <div class="category-filter">
     <button class="active" data-filter="all">Alle</button>
     <button data-filter="shirts">T-Shirts</button>
-    <button data-filter="gear">Gear & Gadgets</button>
-    <button data-filter="home">Home & Deko</button>
-    <button data-filter="fragrances">Parfums & Chaos</button>
-    <button data-filter="food">Food & Drinks</button>
+    <button data-filter="gear">Gear &amp; Gadgets</button>
+    <button data-filter="home">Home &amp; Deko</button>
+    <button data-filter="fragrances">Parfums &amp; Chaos</button>
+    <button data-filter="food">Food &amp; Drinks</button>
   </div>
 
   <div class="grid" id="productGrid">
-    
-<!-- SEE NO TILT WALL TRIPTYCH -->
-    <div class="product" data-category="home">
-      <div class="new-badge">NEU</div>
-      <img src="product_wall_triptych.png" alt="Rama Lama See No Tilt Wall Triptych" />
-      <h3>SEE NO TILT – WALL TRIPTYCH</h3>
-      <p>
-        Drei Lamas, drei Gaming-Gebote: nichts sehen, nichts hören, nichts sagen –
-        vor allem, wenn dein Team wieder Bronze spielt. Neon-Wandbilder mit Holzrahmen
-        für dein Setup, Wohnzimmer oder Rage-Zone.
-      </p>
-      <p>Set aus 3 Bildern, je 30 × 40 cm – perfekt für über dem Monitor oder dem Beichtstuhl deines Ranked-Tilts.</p>
-      <p class="price">159,95 €</p>
-      <button class="button"
-              data-name="See No Tilt Wall Triptych"
-              data-price="159.95">
-        ADD TO LAMA-CART
-      </button>
-    </div>
+
     <!-- RGB NIGHTLIGHT -->
     <div class="product" data-category="home">
       <img src="product_nightlight.png" alt="RGB Lama Nightlight" />
@@ -663,12 +717,31 @@
       <button class="button" data-name="Rama Lama Tactical Squad Poster" data-price="129.95">ADD TO LAMA-CART</button>
     </div>
 
+    <!-- SEE NO TILT WALL TRIPTYCH -->
+    <div class="product" data-category="home">
+      <div class="new-badge">NEU</div>
+      <img src="product_wall_triptych.png" alt="Rama Lama See No Tilt Wall Triptych" />
+      <h3>SEE NO TILT – WALL TRIPTYCH</h3>
+      <p>
+        Drei Lamas, drei Gaming-Gebote: nichts sehen, nichts hören, nichts sagen –
+        vor allem, wenn dein Team wieder Bronze spielt. Neon-Wandbilder mit Holzrahmen
+        für dein Setup, Wohnzimmer oder Rage-Zone.
+      </p>
+      <p>Set aus 3 Bildern, je 30 × 40 cm – perfekt für über dem Monitor oder deiner Tilt-Ecke.</p>
+      <p class="price">159,95 €</p>
+      <button class="button"
+              data-name="See No Tilt Wall Triptych"
+              data-price="159.95">
+        ADD TO LAMA-CART
+      </button>
+    </div>
+
     <!-- ANTI NOOB SPRAY (BESTSELLER) -->
     <div class="product" data-category="gear">
       <div class="bestseller-badge">BESTSELLER</div>
       <img src="product_anti_noob.png" alt="Anti-Noob Spray" />
       <h3>RAMA LAMA ANTI-NOOB SPRAY</h3>
-      <p>Neutralisiert 99,9% aller Noob-Effekte im Umkreis von 5 Metern. Perfekt für Ranked & Raids.</p>
+      <p>Neutralisiert 99,9% aller Noob-Effekte im Umkreis von 5 Metern. Perfekt für Ranked &amp; Raids.</p>
       <p>Inhalt: 250 ml – Geruch: „Toxic Victory“</p>
       <p class="price">129,95 €</p>
       <button class="button" data-name="Anti-Noob Spray" data-price="129.95">ADD TO LAMA-CART</button>
@@ -802,65 +875,235 @@
   </div>
 </section>
 
-<section id="faq">
-  <h2>❓ Oft gestellte Fragen (FAQ)</h2>
-  <div class="content">
-    <p><strong>F: Ist dieser Shop echt?</strong><br>
-      Nein. Dieser Shop ist komplett fiktiv. Wenn du hier wirklich etwas kaufen willst, ist das dein Problem – nicht unseres.</p>
+<!-- FAQ Section – professionell -->
+<section id="faq" class="legal-section">
+  <div class="legal-inner">
+    <h2 class="legal-title">FAQ – Häufig gestellte Fragen</h2>
 
-    <p><strong>F: Warum sehen die Produkte so professionell aus?</strong><br>
-      Weil wir mehr Zeit in Photoshop, KI und Neon gesteckt haben als in unsere echte Steuererklärung.</p>
+    <p>Hier beantworten wir die wichtigsten Fragen rund um den RAMA LAMA Fake-Shop – so professionell, 
+       wie es ein Shop sein kann, in dem man eigentlich nichts kaufen kann.</p>
 
-    <p><strong>F: Kann ich die Sachen irgendwo wirklich bestellen?</strong><br>
-      Nein. Kein Warenversand, keine Rechnung, kein PayPal, kein gar nichts. Nur Screenshots für deine Freunde.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Ist RAMA LAMA ein echter Online-Shop?</h3>
+        <p>
+          Nein. RAMA LAMA ist ein nichtkommerzielles, privates Spaßprojekt. 
+          Es werden keine Waren verkauft, keine Zahlungen abgewickelt und keine Bestellungen ausgeliefert.
+        </p>
+      </div>
 
-    <p><strong>F: Warum sind die Preise so hoch?</strong><br>
-      Weil es Fake ist. Und weil 499,95 € für einen Gaming-Stuhl in Neon einfach gut aussieht.</p>
+      <div class="faq-item">
+        <h3>Kann ich die gezeigten Produkte wirklich bestellen?</h3>
+        <p>
+          Leider (oder zum Glück) nicht. Alle Produkte, Preise und Rabatte dienen ausschließlich 
+          der Unterhaltung und zur Präsentation des Designs.
+        </p>
+      </div>
 
-    <p><strong>F: Gibt es Support, wenn etwas „kaputt“ ist?</strong><br>
-      Klar: Du schreibst uns eine E-Mail, wir lesen sie nie, alle sind zufrieden.</p>
+      <div class="faq-item">
+        <h3>Warum sind die Preise so absurd hoch?</h3>
+        <p>
+          Das ist Teil des Konzepts. RAMA LAMA übertreibt bewusst – bitte nichts davon als echtes Angebot verstehen.
+        </p>
+      </div>
 
-    <p><strong>F: Was ist mit Datenschutz?</strong><br>
-      Wir speichern keine Daten, weil du uns keine geben kannst. Win-Win.</p>
+      <div class="faq-item">
+        <h3>Wer steckt hinter RAMA LAMA?</h3>
+        <p>
+          Ein privater Betreiber mit einer Vorliebe für Neon, Gaming und Lamas. 
+          Es handelt sich nicht um ein Unternehmen im klassischen Sinne.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Werden personenbezogene Daten verarbeitet?</h3>
+        <p>
+          Auf dieser Demoseite findet kein Kaufprozess statt. Es werden keine Zahlungsdaten erhoben 
+          und keine Kundenkonten angelegt. Technische Logdaten können jedoch durch den Hosting-Anbieter 
+          (z.&nbsp;B. GitHub Pages) anfallen.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Kann ich den Betreiber kontaktieren?</h3>
+        <p>
+          Ja, siehe Abschnitt „Kontakt“. Bitte beachte, dass alle Anfragen den Charakter eines 
+          Hobbyprojekts haben und keine geschäftliche Beziehung begründen.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="agb">
-  <h2>📜 AGB – Allgemeine Geschäftsunfähigkeits-Bedingungen</h2>
-  <div class="content">
-    <p><strong>§1 Geltungsbereich</strong><br>
-      Diese AGB gelten für alle Besucher, Screenshot-Sammler, Meme-Bastler und Leute, die zufällig hier gelandet sind.</p>
+<!-- AGB – Allgemeine Geschäftsbedingungen (Fake-Shop) -->
+<section id="agb" class="legal-section alt">
+  <div class="legal-inner">
+    <h2 class="legal-title">Allgemeine Geschäftsbedingungen (AGB)</h2>
 
-    <p><strong>§2 Vertragsabschluss</strong><br>
-      Ein Vertrag kommt niemals zustande. Egal, wie oft du auf „ADD TO LAMA-CART“ klickst – es passiert exakt nichts außer guter Laune.</p>
+    <p>
+      Die nachfolgenden Allgemeinen Geschäftsbedingungen gelten für die Nutzung 
+      der Webseite „RAMA LAMA“ als fiktiver Online-Shop. Es handelt sich ausdrücklich 
+      um ein nichtkommerzielles, privates Projekt ohne tatsächlichen Warenverkauf.
+    </p>
 
-    <p><strong>§3 Preise</strong><br>
-      Alle Preise sind frei erfunden, übertrieben und dienen ausschließlich der Unterhaltung. Es gibt keine Rechnungen, keine Rabatte, außer denen, die lustig aussehen.</p>
+    <p class="legal-subtitle">§ 1 Geltungsbereich</p>
+    <p>
+      (1) Diese AGB gelten für alle Besucherinnen und Besucher der Webseite.  
+      (2) Mit dem Aufruf der Seite akzeptierst du, dass sämtliche dargestellten Angebote 
+      rechtlich unverbindlich und rein fiktiv sind.
+    </p>
 
-    <p><strong>§4 Lieferung</strong><br>
-      Lieferung findet nicht statt. Weder per Post, Drohne, Lama noch Quantum-Teleportation.</p>
+    <p class="legal-subtitle">§ 2 Kein Vertragsabschluss</p>
+    <p>
+      (1) Über die Webseite können keine wirksamen Kaufverträge geschlossen werden.  
+      (2) Schaltflächen wie „ADD TO LAMA-CART“ dienen ausschließlich der Simulation eines 
+      Warenkorbs und haben keine rechtliche Wirkung.
+    </p>
 
-    <p><strong>§5 Zahlung</strong><br>
-      Du kannst nicht zahlen. Wir können kein Geld nehmen. Perfekte Beziehung.</p>
+    <p class="legal-subtitle">§ 3 Preise und Produktdarstellungen</p>
+    <p>
+      (1) Alle Preise, Rabatte und Produktbeschreibungen sind frei erfunden.  
+      (2) Es besteht kein Anspruch auf Lieferung, Preisbindung oder Verfügbarkeit.
+    </p>
 
-    <p><strong>§6 Widerruf</strong><br>
-      Du kannst deinen Fake-Kauf jederzeit widerrufen – indem du das Browserfenster schließt oder laut „MÄÄÄH“ rufst. Beides ist gleich rechtsgültig.</p>
+    <p class="legal-subtitle">§ 4 Haftung</p>
+    <p>
+      (1) Der Betreiber haftet nicht für Schäden, die aus der Nutzung oder Nichtnutzung 
+      der dargestellten Inhalte entstehen, soweit diese nicht auf Vorsatz oder grober Fahrlässigkeit beruhen.  
+      (2) Für Inhalte und Verfügbarkeit des Hosting-Anbieters (z.&nbsp;B. GitHub Pages) wird keine Gewähr übernommen.
+    </p>
 
-    <p><strong>§7 Haftung</strong><br>
-      Wir haften nicht für Lachkrämpfe, spontane Kaufimpulse in echten Shops oder Diskussionen mit deiner besseren Hälfte über „noch ein Gaming-Stuhl“.</p>
+    <p class="legal-subtitle">§ 5 Urheberrecht</p>
+    <p>
+      (1) Design, Logo, Texte und Grafiken der Seite unterliegen dem Urheberrecht des Betreibers 
+      bzw. der jeweils Berechtigten.  
+      (2) Eine Verwendung außerhalb des privaten Gebrauchs bedarf der vorherigen Zustimmung.
+    </p>
 
-    <p><strong>§8 Schlussbestimmung</strong><br>
-      Wenn du diese AGB wirklich komplett gelesen hast, bekommst du von uns innerlich ein Achievement: „§8 – Time Well Wasted“.</p>
+    <p class="legal-subtitle">§ 6 Schlussbestimmungen</p>
+    <p>
+      (1) Es gilt das Recht des Landes, in dem der Betreiber seinen Wohnsitz hat, 
+      soweit dem keine zwingenden gesetzlichen Vorschriften entgegenstehen.  
+      (2) Diese AGB sind Teil eines fiktiven Projekts und sollen vorrangig der 
+      realitätsnahen Darstellung eines Online-Shops dienen.
+    </p>
   </div>
 </section>
 
-<section id="kontakt">
-  <h2>📞 Kontakt (Fake, aber freundlich)</h2>
-  <div class="content" style="text-align:center;">
-    <p>Du möchtest mit uns sprechen?<br>Natürlich kannst du das nicht. Aber hier sind trotzdem unsere Fake-Daten:</p>
-    <p><strong>📧 E-Mail:</strong> support@ramalama-fakeshop.not-real</p>
-    <p><strong>☎ Hotline:</strong> +49 800 LAMA HELP (wartet ewig, niemand geht ran)</p>
-    <p><strong>📍 Adresse:</strong> Lama Hill 1337, Neon City – existiert nicht.</p>
+<!-- Datenschutz -->
+<section id="datenschutz" class="legal-section">
+  <div class="legal-inner">
+    <h2 class="legal-title">Datenschutzhinweise</h2>
+
+    <p>
+      Der Schutz personenbezogener Daten ist wichtig – auch in einem Fake-Shop. 
+      Nachfolgend informieren wir in vereinfachter Form über die Datenverarbeitung.
+    </p>
+
+    <p class="legal-subtitle">1. Verantwortlicher</p>
+    <p>
+      Verantwortlich für die Datenverarbeitung im Sinne der Datenschutzgesetze ist der 
+      private Betreiber der Seite (Kontaktdaten siehe „Impressum“).
+    </p>
+
+    <p class="legal-subtitle">2. Art der verarbeiteten Daten</p>
+    <ul class="legal-list">
+      <li>Technische Zugriffsdaten (z.&nbsp;B. IP-Adresse, Zeitpunkt des Aufrufs, verwendeter Browser)</li>
+      <li>ggf. Cookies oder ähnliche Technologien des Hosting-Anbieters (z.&nbsp;B. GitHub Pages)</li>
+    </ul>
+
+    <p class="legal-subtitle">3. Zweck der Verarbeitung</p>
+    <p>
+      Die Datenverarbeitung erfolgt ausschließlich zur technischen Bereitstellung der Webseite 
+      und zur Sicherstellung von Stabilität und Sicherheit (Server-Logs).
+    </p>
+
+    <p class="legal-subtitle">4. Keine Bestell- oder Zahlungsdaten</p>
+    <p>
+      Über diese Webseite werden keine Bestellungen entgegengenommen und keine Zahlungsdaten erhoben. 
+      Es gibt keine Kundenkonten und keinen Newsletter.
+    </p>
+
+    <p class="legal-subtitle">5. Rechte der betroffenen Personen</p>
+    <p>
+      Soweit anwendbar, bestehen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung 
+      sowie Widerspruch. Anfragen können an die unter „Kontakt“ genannten Daten gerichtet werden.
+    </p>
+
+    <p style="font-size:12px; opacity:0.7; margin-top:20px;">
+      Hinweis: Diese Datenschutzhinweise sind vereinfacht dargestellt und dienen der Illustration. 
+      Für echte kommerzielle Projekte ist eine individuelle rechtliche Beratung erforderlich.
+    </p>
+  </div>
+</section>
+
+<!-- Widerrufsrecht (ironisch, aber formal) -->
+<section id="widerruf" class="legal-section alt">
+  <div class="legal-inner">
+    <h2 class="legal-title">Widerrufsbelehrung</h2>
+
+    <p>
+      Da über diese Webseite keine echten Kaufverträge zustande kommen, 
+      besteht auch kein tatsächliches Widerrufsrecht im Sinne der Verbraucherschutzvorschriften.  
+      Die nachfolgende Belehrung dient lediglich der realitätsnahen Darstellung eines Online-Shops.
+    </p>
+
+    <p class="legal-subtitle">Fiktives Widerrufsrecht</p>
+    <p>
+      Du könntest einen fiktiven Vertrag theoretisch innerhalb von 14 Tagen widerrufen – 
+      wenn es denn einen gäbe. Da es aber keinen echten Vertrag gibt, musst du auch nichts widerrufen.
+    </p>
+  </div>
+</section>
+
+<!-- Impressum -->
+<section id="impressum" class="legal-section">
+  <div class="legal-inner">
+    <h2 class="legal-title">Impressum</h2>
+
+    <p class="legal-subtitle">Angaben gemäß § 5 TMG (fiktiv)</p>
+    <p>
+      RAMA LAMA – Gaming Apparel &amp; Fun Merch (Fake-Shop)<br>
+      Inhaber: Max „Rama“ Mustermann<br>
+      Straße: Lama Hill 1337<br>
+      Ort: 99999 Neon City
+    </p>
+
+    <p class="legal-subtitle">Kontakt</p>
+    <p>
+      E-Mail: support@ramalama-fakeshop.not-real<br>
+      Telefon: +49 (0)800 / LAMA-HELP (keine echte Hotline)<br>
+    </p>
+
+    <p class="legal-subtitle">Hinweis zum Charakter der Webseite</p>
+    <p>
+      Bei dieser Webseite handelt es sich um ein privat betriebenes, nichtkommerzielles Spaßprojekt. 
+      Die dargestellten Produkte sind fiktiv und nicht käuflich. Es findet kein Warenverkauf statt.
+    </p>
+  </div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" class="legal-section alt">
+  <div class="legal-inner">
+    <h2 class="legal-title">Kontakt</h2>
+
+    <p>
+      Du hast Fragen zum Design, zum Projekt oder möchtest einfach nur „Ding Dong“ sagen?
+      Dann kannst du den Betreiber des RAMA LAMA Fake-Shops wie folgt erreichen:
+    </p>
+
+    <p class="legal-subtitle">Kontaktmöglichkeiten</p>
+    <p>
+      📧 E-Mail: <strong>support@ramalama-fakeshop.not-real</strong><br>
+      📞 Telefon: <strong>+49 (0)800 / LAMA-HELP</strong> (symbolisch, keine echte Hotline)<br>
+    </p>
+
+    <p class="legal-subtitle">Antwortzeiten</p>
+    <p>
+      Dies ist ein Hobbyprojekt. Antworten können daher verzögert erfolgen oder ganz ausbleiben. 
+      Es besteht kein Anspruch auf Support.
+    </p>
   </div>
 </section>
 
@@ -899,7 +1142,17 @@
 </section>
 
 <footer>
-  Dies ist ein fiktiver Shop. Kein echter Handel. Nur Spaß. © Rama Lama
+  <div class="footer-links">
+    <a href="#agb">AGB</a> |
+    <a href="#datenschutz">Datenschutz</a> |
+    <a href="#widerruf">Widerruf</a> |
+    <a href="#impressum">Impressum</a> |
+    <a href="#faq">FAQ</a> |
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <div style="font-size:12px; opacity:0.75;">
+    RAMA LAMA ist ein fiktiver, nichtkommerzieller Fake-Shop. Keine echten Angebote, keine Bestellungen, nur Neon &amp; Spaß. © Rama Lama
+  </div>
 </footer>
 
 <!-- Cart Overlay + Panel -->
